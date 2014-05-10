@@ -1,0 +1,21 @@
+extends ../shared/template
+
+block header
+    h1 Artist Page
+
+block content
+
+  form(method="POST" action="/artists", enctype="multipart/form-data")
+      input(type="text", placeholder="Artist", name="name", autofocus=true)
+      input(type="file", name="photo")
+      button.button.glow.button-royal Add Artist
+
+  table
+      thead
+          th Artist
+          th Photo
+      tbody
+          each artist in artists
+              tr
+                  td: a(href="/artists/#{artist._id}")= artist.name
+                  td: img(src="/img/artists/#{artist._id}/#{artist.photo}")

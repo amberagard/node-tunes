@@ -1,0 +1,21 @@
+extends ../shared/template
+
+block header
+    h1= title
+
+block content
+
+  form(method="POST" action="/albums", enctype="multipart/form-data")
+      input(type="text", placeholder="Album", name="name", autofocus=true)
+      input(type="file", name="photo")
+      button.button.glow.button-royal Add Album
+
+  table
+      thead
+          th Album
+          th Photo
+      tbody
+          each album in albums
+              tr
+                  td: a(href="/albums/#{album._id}")= album.name
+                  td: img(src="/img/albums/#{album._id}/#{album.photo}")

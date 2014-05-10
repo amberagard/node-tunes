@@ -1,0 +1,20 @@
+extends ../shared/template
+
+block header
+    h1 Song Page
+
+block content
+
+  form(method="POST" action="/songs", enctype="multipart/form-data")
+      input(type="text", placeholder="Song", name="title", autofocus=true)
+      input(type="file", name="photo")
+
+      select(name="artist")
+          option Select Artist
+      select(name="album")
+          option Select Album
+
+      input(type="text", placeholder="Genre", name="genre")
+
+      button.button.glow.button-royal Add Song
+        

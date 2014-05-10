@@ -1,0 +1,9 @@
+extends ../shared/template
+
+block header
+  h1= artist.name
+
+block content
+
+  each photo in artist.photo
+      //img(src="/img/artists/#{artist._id}/#{artist.photo}")

@@ -7,6 +7,19 @@ html
     link(href='/css/buttons.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
   body
+
+    block header
+
+    nav
+        span
+            a.button.glow.button-royal(href="/") Home
+        span
+            a.button.glow.button-royal(href="/artists") Artists
+        span
+            a.button.glow.button-royal(href="/albums") Albums
+        span
+            a.button.glow.button-royal(href="/songs") Songs
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
