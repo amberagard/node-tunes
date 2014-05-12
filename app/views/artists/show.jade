@@ -5,5 +5,12 @@ block header
 
 block content
 
-  each photo in artist.photo
-      //img(src="/img/artists/#{artist._id}/#{artist.photo}")
+  table
+      thead
+          th Album
+          th Cover
+      tbody
+          each album in artist
+              tr
+                  td= album.name
+                  td: img(src="/img/albums/#{album._id}/#{album.photo}")

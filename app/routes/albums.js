@@ -4,6 +4,7 @@ var multiparty = require('multiparty');
 var albums = global.nss.db.collection('albums');
 var fs = require('fs');
 var Mongo = require('mongodb');
+var songs = global.nss.db.collection('songs');
 
 exports.index = (req, res)=>{
   albums.find().toArray((err, albums)=>{
@@ -52,6 +53,9 @@ exports.create = (req, res)=>{
 exports.show = (req, res)=>{
     var _id = Mongo.ObjectID(req.params.id);
     albums.findOne({_id:_id}, (e, album)=>{
-        res.render('albums/show', {album: album, title: 'Album Show'});
+        songs.find().toArray((err, songs)=>{
+            res.render('albums/show', {songs: songs, album: album, title: 'Album Show'});
+        });
+        console.log(songs);
   });
 };

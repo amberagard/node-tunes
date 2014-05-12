@@ -7,14 +7,32 @@ block content
 
   form(method="POST" action="/songs", enctype="multipart/form-data")
       input(type="text", placeholder="Song", name="title", autofocus=true)
-      input(type="file", name="photo")
-
-      select(name="artist")
-          option Select Artist
-      select(name="album")
-          option Select Album
-
+      input(type="file", name="mp3")
       input(type="text", placeholder="Genre", name="genre")
 
+      select(name="artist")
+          option(value=" ") Select Artist
+          each artist in artists
+              option(value="#{artist._id}")= artist.name
+      select(name="album")
+          option(value=" ") Select Album
+          each album in albums
+              option(value="#{album._id}")= album.name
+
       button.button.glow.button-royal Add Song
-        
+
+    table
+        thead
+            th Play
+            th Song Name
+            th Genre
+            th Album
+            th Artist
+        tbody
+            each song in songs
+                tr
+                    td: audio(src="/audios/songs/#{song._id}/#{song.file}", type="audio/mp3", controls=true)
+                    td= song.name
+                    td= song.genre
+                    td= song.album[0].name
+                    td= song.artist[0].name
