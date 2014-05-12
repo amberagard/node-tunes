@@ -51,11 +51,12 @@ exports.create = (req, res)=>{
 };
 
 exports.show = (req, res)=>{
-    var album = {};
+    //var album = {};
     var _id = Mongo.ObjectID(req.params.id);
     artists.findOne({_id:_id}, (e, artist)=>{
-        albums.find({name: album.name, photo: album.photo}).toArray((err, albums)=>{
-            res.render('artists/show', {album: album, artist: artist, title: 'Artist Show'});
+        albums.find({artist: artist.name}).toArray((err, albums)=>{
+            console.log(albums);
+            res.render('artists/show', {albums: albums, artist: artist, title: 'Artist Show'});
         });
 
   });

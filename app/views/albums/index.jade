@@ -8,6 +8,9 @@ block content
   form(method="POST" action="/albums", enctype="multipart/form-data")
       input(type="text", placeholder="Album", name="name", autofocus=true)
       input(type="file", name="photo")
+      select(name="artist")
+        each artist in artists
+            option(value=artist.name)= artist.name
       button.button.glow.button-royal Add Album
 
   table

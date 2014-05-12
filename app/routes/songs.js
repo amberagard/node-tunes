@@ -13,7 +13,6 @@ exports.index = (req, res)=>{
         albums.find().toArray((err, albums)=>{
             songs.find(req.query).toArray((err, songs)=>{
 
-
             res.render('songs/index', {artists: artists, albums: albums, songs: songs, title: 'Songs'});
             });
         });
@@ -32,8 +31,9 @@ exports.create = (req, res)=>{
                 song.name = fields.title[0];
                 song.genre = fields.genre[0].split(', ').map(w=>w.trim()).map(w=>w.toLowerCase());
                 song.artist = artist;
-                song.album = album;
+                song.album = album[0].name;
                 song.file = files.mp3[0].originalFilename;
+                console.log(album);
 
                 songs.save(song, ()=>{
                     songs.find({name: song.name}).toArray((err, songs)=>{

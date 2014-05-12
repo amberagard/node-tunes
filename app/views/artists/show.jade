@@ -10,7 +10,7 @@ block content
           th Album
           th Cover
       tbody
-          each album in artist
+          each album in albums
               tr
                   td= album.name
                   td: img(src="/img/albums/#{album._id}/#{album.photo}")
